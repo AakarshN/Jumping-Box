@@ -2,6 +2,7 @@ var canvas;
 var music;
 var box1, box2, box3,box4;
 var Mbox;
+var edges
 //var EdgeSprites;
 
 function preload(){
@@ -52,21 +53,22 @@ function setup(){
 
 function draw() {
     background(rgb(169,169,169));
-    createEdgeSprites();
+    edges= createEdgeSprites();
 
     music.play();
 
-    //Mbox.bounceOff(edges);
-   // Mbox.bounceOff(boxGroup);
+    Mbox.bounceOff(edges);
+    Mbox.bounceOff(boxGroup);
    
 
-    if(Mbox.isTouching(box1)){
-        Mbox.shapeColor= "teal";
-        Mbox.bounceOff(boxGroup);
+    if(Mbox.isTouching(box1) && Mbox.bounceOff(boxGroup)){
+         Mbox.shapeColor= "teal";
     }
-    if(Mbox.isTouching(box2)){
+    
+    
+    if(Mbox.isTouching(box2)&& Mbox.bounceOff(boxGroup)){
         Mbox.shapeColor= "maroon";
-        Mbox.bounceOff(boxGroup);
+        
     }
 
     if(Mbox.isTouching(box3)){
@@ -76,9 +78,9 @@ function draw() {
         music.stop();
     }
 
-    if(Mbox.isTouching(box4)){
+    if(Mbox.isTouching(box4)&& Mbox.bounceOff(boxGroup)){
         Mbox.shapeColor= "blue";
-        Mbox.bounceOff(boxGroup);
+        
     }
 
 
